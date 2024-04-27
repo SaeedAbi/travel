@@ -1,11 +1,12 @@
 import React from "react";
-function App() {
-  return (
-    <div className="App">
-     <div>test</div>
+import Layout from "./Components/layout";
 
-    </div>
-  );
+export default function App(){
+return <Layout/>
+
 }
 
-export default App;
+
+
+
+
