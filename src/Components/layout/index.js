@@ -17,10 +17,13 @@ const Layout=()=>{
         setItems(items=>items.filter(item=>item.id !== id))
     }
 
+    const handleToggleitem=(id)=>{
+        setItems(items=>items.map(item=>item.id===id ? {...item, packed:!item.packed}:item))
+    }
     return <div>
         <Logo/>
         <Form onAddItems={handleAddItems} />
-        <PackingList item={items} onDeleteItems={handleDeleteItem}/>
+        <PackingList item={items} onDeleteItems={handleDeleteItem} onToggleitems={handleToggleitem}/>
         <Stats/>
     </div>
 }
