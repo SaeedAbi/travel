@@ -1,15 +1,18 @@
 import React from "react";
 import "../../index.css"
 
-const initialItems = [
-    { id: 1, description: "Passports", quantity: 2, packed: false },
-    { id: 2, description: "Socks", quantity: 12, packed: false },
-];
 
-function Stats(){
+function Stats({items}){
+    if (!items.length) return <p className="stats"><em>Start adding items</em></p>
+    const numItems=items.length
+    const numPacked=items.filter(item=>item.packed).length
+    const percentage=Math.round(numPacked/numItems*100)
+
     return <footer className="stats">
-        <em>👜You have X items and your list,and you already packed X (X%) </em>
-    </footer>
+        {percentage===100 ?'You got everything! Ready to go ✈️':
+        <em>`👜You have {numItems} items and your list,and you already packed {numPacked} ({percentage}%)` </em>
+        }
+        </footer>
 }
 
 export default Stats

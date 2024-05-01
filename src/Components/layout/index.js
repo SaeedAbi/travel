@@ -9,6 +9,7 @@ import "../../index.css"
 const Layout=()=>{
     const [items,setItems]=useState([])
 
+
     const handleAddItems=(item)=>{
         setItems(items=>[...items,item])
     }
@@ -24,7 +25,7 @@ const Layout=()=>{
         <Logo/>
         <Form onAddItems={handleAddItems} />
         <PackingList item={items} onDeleteItems={handleDeleteItem} onToggleitems={handleToggleitem}/>
-        <Stats/>
+        <Stats items={items}/>
     </div>
 }
 
