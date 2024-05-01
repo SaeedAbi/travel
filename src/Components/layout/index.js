@@ -13,10 +13,14 @@ const Layout=()=>{
         setItems(items=>[...items,item])
     }
 
+    const handleDeleteItem=(id)=>{
+        setItems(items=>items.filter(item=>item.id !== id))
+    }
+
     return <div>
         <Logo/>
-        <Form onAddItems={handleAddItems}/>
-        <PackingList item={items}/>
+        <Form onAddItems={handleAddItems} />
+        <PackingList item={items} onDeleteItems={handleDeleteItem}/>
         <Stats/>
     </div>
 }

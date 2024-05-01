@@ -1,27 +1,22 @@
 import React from "react";
 import "../../index.css"
 
-const initialItems = [
-    { id: 1, description: "Passports", quantity: 2, packed: false },
-    { id: 2, description: "Socks", quantity: 12, packed: true },
-    { id: 3, description: "Charger", quantity: 12, packed: false }
-];
 
-function PackingList({item}){
+function PackingList({item,onDeleteItems}){
     return <div className="list">
     <ul >{
-        item.map((item)=><Item item={item} key={item.id}/>
+        item.map((item)=><Item item={item} onDeleteItems={onDeleteItems} key={item.id}/>
         )
     }</ul>
     </div>
 }
 
-const Item=({item})=>{
+const Item=({item,onDeleteItems})=>{
 return  <li>
     <span style={item.packed ? {textDecoration:"line-through"}:{}}>
     {item.quantity} {item.description}
     </span>
-    <button>❌</button>
+    <button onClick={()=>onDeleteItems(item.id)}>❌</button>
 </li>
 
 }
