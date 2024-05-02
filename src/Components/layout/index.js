@@ -21,10 +21,17 @@ const Layout=()=>{
     const handleToggleitem=(id)=>{
         setItems(items=>items.map(item=>item.id===id ? {...item, packed:!item.packed}:item))
     }
+
+    const handleClearList=()=>{
+        const confirmed=window.confirm("Are you sure you want to delete all items?")
+if(confirmed) setItems([])
+
+
+    }
     return <div>
         <Logo/>
         <Form onAddItems={handleAddItems} />
-        <PackingList item={items} onDeleteItems={handleDeleteItem} onToggleitems={handleToggleitem}/>
+        <PackingList item={items} onDeleteItems={handleDeleteItem} onToggleitems={handleToggleitem} onClearItems={handleClearList }/>
         <Stats items={items}/>
     </div>
 }
